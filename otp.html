@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Access</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+<header>
+  <img alt="Logo" class="logo" src="/logo.jpg" height="50" width="500">
+</header>
+
+<section class="otp-section">
+  <h2>Enter OTP</h2>
+  <form id="otp-form" class="otp-form">
+    <input type="text" id="otp-code" placeholder="Enter your OTP number" required>
+    <button type="submit">Go to Document</button>
+  </form>
+  <div class="otp-message" id="otp-message"></div>
+</section>
+
+
+</body>
+</html>

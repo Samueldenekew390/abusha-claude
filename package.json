@@ -1,0 +1,9 @@
+{
+  "name": "abusha-client-registration",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Static Supabase client registration and admin document system",
+  "scripts": {
+    "start": "echo This is a static Supabase site; deploy it to Vercel or any static host."
+  }
+}

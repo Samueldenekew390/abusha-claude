@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-LMIS Admin</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <img alt="Logo" class="logo" src="../logo.jpg" height="50" width="500" />
+    </header>
+
+    <section class="admin-panel">
+      <div class="admin-auth-card" id="admin-auth-card">
+        <h2>Admin Access</h2>
+        <p id="admin-auth-message">Loading admin session…</p>
+
+        <form id="admin-change-password-form" class="admin-auth-form">
+          <h3>Change Password</h3>
+          <label for="admin-current-password">Current password</label>
+          <input
+            type="password"
+            id="admin-current-password"
+            placeholder="Enter current password"
+            required
+          />
+
+          <label for="admin-new-password">New password</label>
+          <input
+            type="password"
+            id="admin-new-password"
+            placeholder="Enter a new password"
+            required
+          />
+
+          <label for="admin-new-password-confirm">Confirm new password</label>
+          <input
+            type="password"
+            id="admin-new-password-confirm"
+            placeholder="Confirm the new password"
+            required
+          />
+
+          <button type="submit">Change Password</button>
+        </form>
+
+        <button type="button" class="secondary-button" id="admin-logout-button">
+          Logout
+        </button>
+      </div>
+
+      <div class="admin-dashboard" id="admin-dashboard">
+        <h2>Admin Document & Payment Manager</h2>
+        <p>
+          Fill in the document and assign an OTP. When the user enters the OTP,
+          they will be directed to this document.
+        </p>
+
+        <form id="admin-doc-form" class="admin-form">
+          <label for="admin-otp">OTP Number</label>
+          <input
+            type="text"
+            id="admin-otp"
+            placeholder="Enter OTP number"
+            required
+          />
+
+          <label for="admin-client-name">Name</label>
+          <input
+            type="text"
+            id="admin-client-name"
+            placeholder="Enter name"
+            required
+          />
+
+          <label for="admin-doc-title">Document Title</label>
+          <input
+            type="text"
+            id="admin-doc-title"
+            placeholder="Enter document title"
+            required
+          />
+
+          <label for="admin-photo">Photo</label>
+          <input type="file" id="admin-photo" accept="image/*" />
+          <img
+            id="admin-photo-preview"
+            class="admin-photo-preview"
+            alt="Photo preview"
+            style="display: none"
+          />
+
+          <label for="admin-doc-content">Document Content</label>
+          <textarea
+            id="admin-doc-content"
+            rows="8"
+            placeholder="Enter the document details"
+            required
+          ></textarea>
+
+          <button type="submit">Save Client Doc</button>
+        </form>
+
+        <div class="admin-message" id="admin-message"></div>
+
+        <div class="admin-list" id="admin-list"></div>
+      </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../config.js"></script>
+    <script src="../script.js"></script>
+    <script src="admin-auth.js"></script>
+  </body>
+</html>

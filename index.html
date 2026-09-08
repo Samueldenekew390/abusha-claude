@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-LMIS Canada - Ministry of Labour and Skills</title>
+    <link rel="stylesheet" href="style.css" />
+
+  </head>
+
+  <body>
+    <header>
+      <img class="logo" src="logo.jpg" alt="Logo" height="50" width="500" />
+    </header>
+
+    <section class="minister-section">
+      <div class="card">
+        <img src="banner1.jpg" />
+        <h2>Minister of Labor and Skills</h2>
+        <p>H.E Muferihat Kamil Ahmed</p>
+        <button>Read More</button>
+      </div>
+
+      <div class="card">
+        <img src="banner2.jpg" />
+        <h2>State Minister for Technical and Vocational Education</h2>
+        <p>H.E Dr. Teshale Berecha</p>
+        <button>Read More</button>
+      </div>
+
+      <div class="card">
+        <img src="banner3.jpg" />
+        <h2>State Minister for Labor Employment and Market Sector</h2>
+        <p>H.E Mr. Solomon Soka</p>
+        <button>Read More</button>
+      </div>
+    </section>
+
+    <section class="news">
+      <h2>News</h2>
+
+      <div class="news-container">
+        <div class="news-card">
+          <h3>Government service reform work is owned by employees</h3>
+          <p>February 12, 2026</p>
+          <div class="news-image-wrap">
+            <img src="news1.jpg" alt="News 1" />
+            <div class="news-overlay">
+              የመንግስት አገልግሎትና አስተዳደር የሪፎርም ሥራው ባለቤት ሰራተኛው ነው። ክብርት ወ/ሮ ሙፈሪያት ካሚል
+              የሥራና ክህሎት ሚኒስትር
+            </div>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <h3>Government administration reform implementation</h3>
+          <p>February 12, 2026</p>
+          <div class="news-image-wrap">
+            <img src="news2.jpg" alt="News 2" />
+            <div class="news-overlay">የመንግስት አገልግሎትና አስተዳደር ሪፎርምና ትግበራ...</div>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <h3>Innovation ideas competition started</h3>
+          <p>February 12, 2026</p>
+          <div class="news-image-wrap">
+            <img src="news3.jpg" alt="News 3" />
+            <div class="news-overlay">ብሩህ ሀገር አቀፍ የፈጠራ ሃሳብ ውድድር መካሄድ ጀመረ</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="register">
+      <h2>video.mp4</h2>
+
+      <video controls preload="none">
+        <source src="video.mp4" type="video/mp4" />
+      </video>
+
+      <div class="register-action">
+        <button id="register-toggle" class="primary-button">Register</button>
+      </div>
+
+      <!-- Modal for registration -->
+      <div id="register-modal" class="modal-backdrop" style="display: none">
+        <div class="modal-content">
+          <button id="register-close" class="modal-close">✕</button>
+          <form
+            id="client-register-form"
+            class="register-form"
+            enctype="multipart/form-data"
+          >
+            <label for="client-name">Name:</label>
+            <input id="client-name" name="name" type="text" required />
+
+            <label for="client-age">Age:</label>
+            <input id="client-age" name="age" type="number" min="0" required />
+
+            <label for="client-gender">Gender:</label>
+            <select id="client-gender" name="gender" required>
+              <option value="">Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+
+            <label for="client-email">Email:</label>
+            <input id="client-email" name="email" type="email" required />
+
+            <label for="client-phone">Phone number:</label>
+            <input id="client-phone" name="phone" type="tel" required />
+
+            <label for="client-dob">Date of Birth:</label>
+            <input id="client-dob" name="dob" type="date" required />
+
+            <label for="client-place">Place of Birth:</label>
+            <input id="client-place" name="place" type="text" required />
+
+            <label for="client-country">Country:</label>
+            <input id="client-country" name="country" type="text" required />
+
+            <label for="client-passport">Passport number:</label>
+            <input id="client-passport" name="passport" type="text" required />
+
+            <label for="client-photo">Passport or ID photo:</label>
+            <input
+              id="client-photo"
+              name="photo"
+              type="file"
+              accept="image/*"
+            />
+            <img
+              id="client-photo-preview"
+              class="admin-photo-preview"
+              style="display: none"
+            />
+
+            <button type="submit" class="primary-button">Submit</button>
+            <p
+              id="register-message"
+              style="color: #0057a8; font-weight: bold; margin-top: 10px"
+            ></p>
+          </form>
+        </div>
+      </div>
+
+      <img src="abusha.jpg" alt="Abusha" class="register-image" />
+      <p class="payment-text">Payment: 9450</p>
+    </section>
+
+    <section class="statistics">
+      <h2>Basic Employment Statistics</h2>
+
+      <img src="map.jpg" />
+    </section>
+
+    <section class="client-access">
+      <h2>Client Document Access</h2>
+      <p>Enter your OTP to view the document created for you.</p>
+      <a class="primary-button" href="otp.html">Enter OTP</a>
+    </section>
+
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="question">
+        What is the performance of job creation for fiscal year 2014?
+        <span>+</span>
+      </div>
+
+      <div class="question">
+        What is Differentiation in Zoning and Training Fields?
+        <span>+</span>
+      </div>
+
+      <div class="question">
+        Training Areas Differentiation?
+        <span>+</span>
+      </div>
+    </section>
+
+    <section class="contact-box">
+      <button class="contact-button">
+        <a href="tel:0990835872">Contact</a>
+      </button>
+      <div class="contact-box-text">
+        <h2>The Ministry of Labor & Skills</h2>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <p>
+          The Ministry of Labour and Skills was established following the
+          National Reform. The Ministry of Labour and Skills was founded with
+          Proclamation No. 1263/2022, which oversees national job creation,
+          skills development, and labor concerns.
+        </p>
+        <h3>Get In Touch</h3>
+        <p>Tel no: +25990835872</p>
+        <p>Po Box: 25534</p>
+        <p>Fax: +25990835872</p>
+        <p>
+          Address: Behind Lambert Ethiopian Technical and Vocational Institute
+        </p>
+        <p>Email: <a href="mailto:info@Mols.gov.et">info@Mols.gov.et</a></p>
+      </div>
+    </footer>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

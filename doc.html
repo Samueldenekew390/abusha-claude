@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="questionnaire.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+<script src="script.js"></script>
+<script src="questionnaire.js"></script>
+</head>
+<body>
+<header>
+  <img alt="Logo" class="logo" src="/logo.jpg" height="50" width="500">
+</header>
+
+<section class="doc-view">
+  <div class="doc-card">
+    <img id="doc-photo" class="doc-photo" alt="Photo" style="display:none;" />
+    <div class="doc-card-info">
+      <h2 id="doc-title">Client Document</h2>
+      <p class="doc-meta" id="doc-client"></p>
+      <div class="doc-body" id="doc-body"></div>
+    </div>
+  </div>
+
+  <div class="receipt-section">
+    <h3>Payment Verification</h3>
+    <p id="payment-notice" class="payment-notice">Please upload your payment receipt below.</p>
+    <form id="receipt-form" class="receipt-form">
+      <label for="receipt-photo">Receipt or Payment Photo</label>
+      <input id="receipt-photo" type="file" accept="image/*" required />
+      <img id="receipt-preview" class="receipt-preview" alt="Receipt preview" style="display:none;" />
+      <button type="submit" class="primary-button">Submit Receipt</button>
+      <p id="receipt-message"></p>
+    </form>
+  </div>
+
+  <!-- Registration Questionnaire — only revealed after a receipt is uploaded.
+       Stays hidden until script.js confirms a receipt exists for this OTP. -->
+  <div class="questionnaire-embed" id="questionnaire-section" hidden>
+    <section class="questionnaire-card" id="questionnaireCard" aria-labelledby="cardTitle">
+      <header class="card-header" id="cardHeader">
+        <h1 class="card-title" id="cardTitle">Registration Questionnaire</h1>
+        <p class="card-subtitle" id="cardSubtitle">
+          Please answer the following questions accurately to complete your registration.
+        </p>
+      </header>
+
+      <div class="progress-section" id="progressSection" aria-label="Registration Progress">
+        <div class="progress-meta">
+          <span class="progress-text" id="progressText">Question 1 of 3</span>
+          <span class="progress-percent" id="progressPercent">33%</span>
+        </div>
+        <div
+          class="progress-track"
+          id="progressBarTrack"
+          role="progressbar"
+          aria-valuemin="1"
+          aria-valuemax="3"
+          aria-valuenow="1"
+          aria-label="Questionnaire Progress"
+        >
+          <div class="progress-fill" id="progressBarFill"></div>
+        </div>
+      </div>
+
+      <div
+        class="validation-message"
+        id="validationMessage"
+        role="alert"
+        aria-live="polite"
+        hidden
+      >
+        <svg class="validation-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <span id="validationMessageText">Please select an answer before continuing.</span>
+      </div>
+
+      <form id="questionnaireForm" novalidate>
+        <fieldset class="question-step" id="step1" aria-labelledby="q1Title">
+          <legend class="question-legend" id="q1Title">What is your marital status?</legend>
+          <div class="options-group" role="radiogroup" aria-labelledby="q1Title">
+            <label class="option-card" id="opt-single" for="marital-single">
+              <input type="radio" id="marital-single" name="marital_status" value="Single" class="option-input" />
+              <span class="option-card-content">
+                <span class="radio-circle" aria-hidden="true"><span class="radio-dot"></span></span>
+                <span class="option-text">Single</span>
+              </span>
+            </label>
+            <label class="option-card" id="opt-married" for="marital-married">
+              <input type="radio" id="marital-married" name="marital_status" value="Married" class="option-input" />
+              <span class="option-card-content">
+                <span class="radio-circle" aria-hidden="true"><span class="radio-dot"></span></span>
+                <span class="option-text">Married</span>
+              </span>
+            </label>
+            <label class="option-card" id="opt-divorced" for="marital-divorced">
+              <input type="radio" id="marital-divorced" name="marital_status" value="Divorced" class="option-input" />
+              <span class="option-card-content">
+                <span class="radio-circle" aria-hidden="true"><span class="radio-dot"></span></span>
+                <span class="option-text">Divorced</span>
+              </span>
+            </label>
+            <label class="option-card" id="opt-widowed" for="marital-widowed">
+              <input type="radio" id="marital-widowed" name="marital_status" value="Widowed" class="option-input" />
+              <span class="option-card-content">
+                <span class="radio-circle" aria-hidden="true"><span class="radio-dot"></span></span>
+                <span class="option-text">Widowed</span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question-step" id="step2" aria-labelledby="q2Title" hidden>
+          <legend class="question-legend" id="q2Title">Are you currently free from outstanding debt?</legend>
+          <div class="options-group" role="radiogroup" aria-labelledby="q2Title">
+            <label class="option-card" id="opt-debt-yes" for="debt-yes">
+              <input type="radio" id="debt-yes" name="debt_status" value="Yes" class="option-input" />
+              <span class="option-card-content">
+                <span class="radio-circle" aria-hidden="true"><span class="radio-dot"></span></span>
+                <span class="option-text">Yes</span>
+              </span>
+            </label>
+            <label class="option-card" id="opt-debt-no" for="debt-no">
+              <input type="radio" id="debt-no" name="debt_status" value="No" class="option-input" />
+              <span class="option-card-content">
+                <span class="radio-circle" aria-hidden="true"><span class="radio-dot"></span></span>
+                <span class="option-text">No</span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="question-step" id="step3" aria-labelledby="q3Title" hidden>
+          <legend class="question-legend" id="q3Title">Do you currently have a criminal record?</legend>
+          <div class="options-group" role="radiogroup" aria-labelledby="q3Title">
+            <label class="option-card" id="opt-crime-yes" for="crime-yes">
+              <input type="radio" id="crime-yes" name="criminal_record" value="Yes" class="option-input" />
+              <span class="option-card-content">
+                <span class="radio-circle" aria-hidden="true"><span class="radio-dot"></span></span>
+                <span class="option-text">Yes</span>
+              </span>
+            </label>
+            <label class="option-card" id="opt-crime-no" for="crime-no">
+              <input type="radio" id="crime-no" name="criminal_record" value="No" class="option-input" />
+              <span class="option-card-content">
+                <span class="radio-circle" aria-hidden="true"><span class="radio-dot"></span></span>
+                <span class="option-text">No</span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="navigation-actions" id="navigationActions">
+          <button type="button" class="btn btn-secondary" id="backBtn" hidden aria-label="Go to previous question">Back</button>
+          <button type="button" class="btn btn-primary" id="nextBtn" aria-label="Go to next question">Next</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn" hidden aria-label="Submit questionnaire">Submit</button>
+        </div>
+      </form>
+
+      <section class="success-screen" id="successScreen" aria-labelledby="successTitle" hidden>
+        <div class="success-icon-badge" aria-hidden="true">
+          <svg class="success-icon-svg" viewBox="0 0 24 24" focusable="false">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h2 class="success-title" id="successTitle">Congratulations!</h2>
+        <p class="success-lead">Your registration questionnaire has been successfully completed.</p>
+        <p class="success-body">Thank you for providing the required information. Your registration process is now complete.</p>
+      </section>
+    </section>
+  </div>
+</section>
+
+
+</body>
+</html>
